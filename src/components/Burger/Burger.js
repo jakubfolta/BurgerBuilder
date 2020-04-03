@@ -1,12 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
+import classes from './Burger.module.css';
 
 const Burger = props => {
   return (
-    <Fragment>
+    <div className={classes.Burger}>
+      <BurgerIngredient type={'bread-top'}/>
       <BurgerIngredient type={'cheese'}/>
-    </Fragment>
+      <BurgerIngredient type={'bread-bottom'}/>
+    </div>
   );
 }
 
