@@ -1,7 +1,7 @@
 # BurgerBuilder
 An app for ordering your own custom burger!
 
-## Check Here ==>
+## Check Here ==> https://jakubfolta.github.io/BurgerBuilder/
 
 ## BurgerBuilder
 
