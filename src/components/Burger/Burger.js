@@ -4,7 +4,15 @@ import classes from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const Burger = props => {
-  
+  const transformedIngredients = Object.keys(props.ingredients)
+    .map(ing => {
+      return [...Array(props.ingredients[ing])].map((_, i) => {
+        return <BurgerIngredient key={ing + i} type={ing} />
+      })
+    })
+    .reduce((acc, el) => {
+      return acc.concat(el);
+    }, [])
   console.log(transformedIngredients);
   return (
     <div className={classes.Burger}>
