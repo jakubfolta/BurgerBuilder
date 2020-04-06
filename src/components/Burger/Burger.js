@@ -10,7 +10,9 @@ const Burger = props => {
         return <BurgerIngredient key={ing + i} type={ing}/>
       });
     })
-    
+    .reduce((acc, el) => {
+      return acc.concat(el);
+    }, [])
   console.log(transformedIngredients);
   return (
     <div className={classes.Burger}>
