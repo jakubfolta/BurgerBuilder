@@ -9,7 +9,9 @@ const Burger = props => {
       return [...Array(props.ingredients[ing])].map((_, i) => {
         return <BurgerIngredient key={ing + i} type={ing}/>
       });
-    });
+    })
+    
+  console.log(transformedIngredients);
   return (
     <div className={classes.Burger}>
       <BurgerIngredient type="bread-top" />
