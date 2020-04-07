@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import Modal from '../../components/UI/Modal/Modal';
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -41,7 +43,7 @@ class BurgerBuilder extends Component {
     updatedIngredients[type] = newCount;
     // Update price
     const newPrice = this.state.totalPrice + INGREDIENT_PRICES[type];
-    this.setState({ingredients: updatedIngredients, totalPrice: newPrice, });
+    this.setState({ingredients: updatedIngredients, totalPrice: newPrice});
 
     this.updatePurchaseState(updatedIngredients);
   };
@@ -64,6 +66,9 @@ class BurgerBuilder extends Component {
   render() {
     return (
       <Fragment>
+        <Modal>
+          <OrderSummary state={this.state}/>
+        </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
           ingredientAdded={this.addIngredientHandler}
