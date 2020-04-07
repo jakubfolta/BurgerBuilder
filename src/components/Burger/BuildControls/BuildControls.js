@@ -21,6 +21,9 @@ const BuildControls = props => (
           remove={() => props.ingredientRemoved(ctrl.type)}
           disabled={!props.state.ingredients[ctrl.type]} />
       ))}
+      <button
+        className={classes.OrderButton}
+        disabled={!(props.state.totalPrice > 4)} >ORDER NOW</button>
     </div>
 )
 
