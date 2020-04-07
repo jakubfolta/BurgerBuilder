@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 
-import classes from './OrderSummary.module.css';
-
 const OrderSummary = props => {
-  const ingredientSummary = props.ingredients
+  const ingredientSummary = Object.keys(props.state.ingredients)
+    .map(el => {
+      return <li key={el}>{el}: {props.state.ingredients[el]}</li>
+    })
 
   return (
     <Fragment>
