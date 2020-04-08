@@ -1,6 +1,16 @@
 .List {
   list-style: none;
   display: flex;
-  align-items: center;
-  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 500px) {
+  .List {
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+    width: auto;
+  }
 }

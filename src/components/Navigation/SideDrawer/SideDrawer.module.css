@@ -2,13 +2,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 28rem;
+  width: 24rem;
   max-width: 70%;
   height: 100%;
   z-index: 200;
   background-color: white;
   padding: 3rem 1.5rem;
   transition: transform .3s ease-out;
+  text-align: center;
 }
 
 @media (min-width: 500px) {
@@ -20,5 +21,8 @@
 .Open { transform: translateX(0); }
 .Close { transform: translateX(-100%); }
 
-.Logo { height: 10%; }
+.Logo {
+  height: 10%;
+  margin-bottom: 3rem;
+}
 
