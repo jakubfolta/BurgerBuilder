@@ -1,8 +1,8 @@
 .Logo {
   padding: 1rem;
-  height: 90%;
+  height: 80%;
   background-color: white;
-  border-radius: 50%;
+  border-radius: 1rem;
 }
 
 .Logo img { height: 100%; }
