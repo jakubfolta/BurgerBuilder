@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import classes from './OrderSummary.module.css';
+import Button from '../../UI/Button/Button';
 
 const OrderSummary = props => {
   const ingredientSummary = Object.keys(props.state.ingredients)
@@ -21,8 +21,9 @@ const OrderSummary = props => {
       </ul>
       <p>Price: {(props.state.totalPrice).toFixed(2)}</p>
       <p>Continue to checkout?</p>
-      <button className={classes.Button.Danger} onClick={props.cancel}>Cancel</button>
-      <button className={classes.Button.Success} onClick={props.cancel}>Continue</button>
+      <Button
+        btnType='Danger'
+        cancel={props.cancel} >Cancel</Button>
     </Fragment>
   )
 }
