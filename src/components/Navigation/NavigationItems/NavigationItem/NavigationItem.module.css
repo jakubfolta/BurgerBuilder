@@ -1,0 +1,10 @@
+.Item {
+  padding: .5rem;
+}
+
+.Item a:link,
+.Item a:visited {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+}
