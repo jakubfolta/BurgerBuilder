@@ -27,7 +27,7 @@ class BurgerBuilder extends Component {
 
   orderHandler = () => {
     this.setState({order: true})
-  }
+  };
 
   updatePurchaseState = (ingredients) => {
     const sum = Object.keys(ingredients)
@@ -36,7 +36,7 @@ class BurgerBuilder extends Component {
         return acc + el;
       }, 0)
     this.setState({purchasable: sum > 0});
-  }
+  };
 
   addIngredientHandler = type => {
     // Update ingredient count
@@ -67,7 +67,7 @@ class BurgerBuilder extends Component {
 
   closeSummaryHandler = () => {
     this.setState({order: false});
-  }
+  };
 
   render() {
     return (
@@ -75,7 +75,9 @@ class BurgerBuilder extends Component {
         <Modal
           show={this.state.order}
           hide={this.closeSummaryHandler} >
-          <OrderSummary state={this.state}/>
+          <OrderSummary
+            state={this.state}
+            cancel={this.closeSummaryHandler} />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
