@@ -5,7 +5,7 @@ import classes from './DrawerToggle.module.css';
 const DrawerToggle = props => (
   <div
     className={[classes.Toggle, classes.DesktopOnly].join(' ')}
-    onClick={props.show} >
+    onClick={props.clicked} >
     <span className={classes.Toggle__button} />
   </div>
 )
