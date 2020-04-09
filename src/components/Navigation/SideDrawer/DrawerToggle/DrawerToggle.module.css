@@ -8,7 +8,7 @@
 .Toggle__button {
   position: relative;
   width: 4rem;
-  height: .5rem;
+  height: .3rem;
   background-color: white;
 }
 
@@ -18,9 +18,9 @@
   top: -1rem;
   left: 0;
   width: 4rem;
-  height: .5rem;
+  height: .3rem;
   background-color: white;
-  transition: all .2s;
+  transition: all .1s;
 }
 
 .Toggle__button::after {
@@ -29,9 +29,9 @@
   top: 1rem;
   left: 0;
   width: 4rem;
-  height: .5rem;
+  height: .3rem;
   background-color: white;
-  transition: all .2s;
+  transition: all .1s;
 }
 
 .Toggle:hover .Toggle__button::before { top: -1.2rem; }
