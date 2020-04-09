@@ -1,11 +1,18 @@
-.DrawerToggle {
+.Toggle {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.Toggle__button {
   position: relative;
   width: 4rem;
   height: .5rem;
   background-color: white;
 }
 
-.DrawerToggle::before {
+.Toggle__button::before {
   content: '';
   position: absolute;
   top: -1rem;
@@ -13,8 +20,10 @@
   width: 4rem;
   height: .5rem;
   background-color: white;
+  transition: all .2s;
 }
-.DrawerToggle::after {
+
+.Toggle__button::after {
   content: '';
   position: absolute;
   top: 1rem;
@@ -22,4 +31,8 @@
   width: 4rem;
   height: .5rem;
   background-color: white;
+  transition: all .2s;
 }
+
+.Toggle:hover .Toggle__button::before { top: -1.2rem; }
+.Toggle:hover .Toggle__button::after { top: 1.2rem; }
