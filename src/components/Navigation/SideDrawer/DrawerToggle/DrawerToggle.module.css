@@ -36,3 +36,9 @@
 
 .Toggle:hover .Toggle__button::before { top: -1.2rem; }
 .Toggle:hover .Toggle__button::after { top: 1.2rem; }
+
+@media (min-width: 500px) {
+  .DesktopOnly {
+    display: none;
+  }
+}
