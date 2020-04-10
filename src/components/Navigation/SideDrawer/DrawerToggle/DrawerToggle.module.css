@@ -3,6 +3,7 @@
   height: 4rem;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .Toggle__button {
