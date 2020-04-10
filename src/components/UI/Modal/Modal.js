@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 
 import classes from './Modal.module.css';
 import Backdrop from '../Backdrop/Backdrop';
+import PropTypes from 'prop-types';
 
 const Modal = props => (
   <Fragment>
@@ -15,5 +16,10 @@ const Modal = props => (
     </div>
   </Fragment>
 )
+
+Modal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  hide: PropTypes.func.isRequired
+}
 
 export default Modal;
