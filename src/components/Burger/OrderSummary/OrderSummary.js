@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 
 import Button from '../../UI/Button/Button';
+import PropTypes from 'prop-types';
 
-const OrderSummary = props => {
-  const ingredientSummary = Object.keys(props.state.ingredients)
+class OrderSummary extends Component {
+  ingredientSummary = Object.keys(this.props.state.ingredients)
     .map(el => {
       return (
         <li key={el}>
