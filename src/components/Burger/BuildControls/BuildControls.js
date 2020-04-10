@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import classes from './BuildControls.module.css';
 import BuildControl from './BuildControl/BuildControl';
+import PropTypes from 'prop-types';
 
 const controls = [
   {label: 'Salad', type: 'salad'},
@@ -30,6 +31,14 @@ class BuildControls extends Component {
       </div>
     )
   }
+}
+
+BuildControls.propTypes = {
+  state: PropTypes.object.isRequired,
+  ingredientAdded: PropTypes.func.isRequired,
+  ingredientRemoved: PropTypes.func.isRequired,
+  purchasable: PropTypes.bool.isRequired,
+  order: PropTypes.func.isRequired
 }
 
 export default BuildControls;
