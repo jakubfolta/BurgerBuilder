@@ -4,6 +4,7 @@ import Button from '../../UI/Button/Button';
 import PropTypes from 'prop-types';
 
 class OrderSummary extends Component {
+  // This could be a functional component, doesn't have to be a class
   componentDidUpdate() {
     console.log('[OrderSummary] will update');
   }
