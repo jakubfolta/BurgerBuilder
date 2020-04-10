@@ -4,6 +4,7 @@ import classes from './SideDrawer.module.css';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import Backdrop from '../../UI/Backdrop/Backdrop';
+import PropTypes from 'prop-types';
 
 const SideDrawer = props => {
   const attachedClasses = props.open ? "Open" : "Close";
@@ -24,5 +25,10 @@ const SideDrawer = props => {
     </Fragment>
   )
 };
+
+SideDrawer.propTypes = {
+  open: PropTypes.bool.isRequired,
+  hide: PropTypes.func.isRequired
+}
 
 export default SideDrawer;
