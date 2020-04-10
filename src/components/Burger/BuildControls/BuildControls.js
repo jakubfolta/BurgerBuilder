@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import classes from './BuildControls.module.css';
 import BuildControl from './BuildControl/BuildControl';
@@ -10,22 +10,26 @@ const controls = [
   {label: 'Meat', type: 'meat'}
 ]
 
-const BuildControls = props => (
-    <div className={classes.BuildControls}>
-      <h3>Current price: <strong>{props.state.totalPrice.toFixed(2)}</strong></h3>
+class BuildControls extends Component {
+  render() {
+    return (
+      <div className={classes.BuildControls}>
+      <h3>Current price: <strong>{this.props.state.totalPrice.toFixed(2)}</strong></h3>
       {controls.map(ctrl => (
         <BuildControl
           key={ctrl.label}
           label={ctrl.label}
-          add={() => props.ingredientAdded(ctrl.type)}
-          remove={() => props.ingredientRemoved(ctrl.type)}
-          disabled={!props.state.ingredients[ctrl.type]} />
-      ))}
+          add={() => this.props.ingredientAdded(ctrl.type)}
+          remove={() => this.props.ingredientRemoved(ctrl.type)}
+          disabled={!this.props.state.ingredients[ctrl.type]} />
+        ))}
       <button
         className={classes.OrderButton}
-        disabled={!props.purchasable}
-        onClick={props.order} >ORDER NOW</button>
-    </div>
-)
+        disabled={!this.props.purchasable}
+        onClick={this.props.order} >ORDER NOW</button>
+      </div>
+    )
+  }
+}
 
 export default BuildControls;
