@@ -38,5 +38,10 @@ class OrderSummary extends Component {
   }
 }
 
+OrderSummary.propTypes = {
+  state: PropTypes.object.isRequired,
+  purchaseCancelled: PropTypes.func.isRequired,
+  purchaseContinued: PropTypes.func.isRequired
+};
 
 export default OrderSummary;
