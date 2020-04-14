@@ -4,6 +4,7 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Modal from '../../components/UI/Modal/Modal';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import axios from '../../axios-orders';
 
 
@@ -24,7 +25,8 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 4,
     purchasable: false,
-    order: false
+    order: false,
+    loading: false
   }
 
   orderHandler = () => {
@@ -72,6 +74,10 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
+    this.setState({
+      loading: true
+    })
+
     const order = {
       ingredients: this.state.ingredients,
       totalPrice: this.state.totalPrice,
@@ -93,15 +99,22 @@ class BurgerBuilder extends Component {
   };
 
   render() {
+    let orderSummary = (
+      <OrderSummary
+        state={this.state}
+        purchaseCancelled={this.purchaseCancelHandler}
+        purchaseContinued={this.purchaseContinueHandler} />
+    )
+    if (this.state.loading) {
+      orderSummary = <Spinner />
+    }
+
     return (
       <Fragment>
         <Modal
           show={this.state.order}
           hide={this.purchaseCancelHandler} >
-          <OrderSummary
-            state={this.state}
-            purchaseCancelled={this.purchaseCancelHandler}
-            purchaseContinued={this.purchaseContinueHandler} />
+          {orderSummary}
         </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
