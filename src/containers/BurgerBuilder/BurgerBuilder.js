@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Modal from '../../components/UI/Modal/Modal';
+import instance from '../../axios-orders';
+
 
 const INGREDIENT_PRICES = {
   salad: 0.5,
@@ -70,7 +73,13 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    alert('You continue!');
+    const order = {
+      ingredients: this.state.ingredients,
+      totalPrice: this.state.totalPrice
+    };
+
+    instance.axios.post(order)
+      .then(response => console.log(response));
   };
 
   render() {
