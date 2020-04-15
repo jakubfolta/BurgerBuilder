@@ -7,7 +7,7 @@ const withErrorHandler = WrappedComponent => {
     return (
       <Fragment>
         <Modal>
-          
+          Something didn't work!
         </Modal>
         <WrappedComponent {...props} />
       </Fragment>
