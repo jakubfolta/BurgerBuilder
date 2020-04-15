@@ -4,11 +4,14 @@ import Modal from '../../components/UI/Modal/Modal';
 
 const withErrorHandler = (WrappedComponent, axios) => {
   return class extends Component {
-    state = {
-      error: null
-    }
+    constructor() {
+      super();
 
-    componentDidMount() {
+      this.state = {
+        error: null
+      }
+
+
       axios.interceptors.request.use(req => {
         this.setState({error: null});
         return req;
@@ -18,6 +21,8 @@ const withErrorHandler = (WrappedComponent, axios) => {
         this.setState({error: error});
       });
     }
+
+
 
     errorConfirmedHandler = () => {
       this.setState({error: null});
