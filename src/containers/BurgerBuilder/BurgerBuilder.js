@@ -125,7 +125,6 @@ class BurgerBuilder extends Component {
             order={this.orderHandler}/>
           </Fragment>
       );
-
       orderSummary = (
         <OrderSummary
           state={this.state}
