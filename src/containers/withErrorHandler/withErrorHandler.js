@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-const withErrorHandler = (WrappedComponent) => {
+import Modal from '../../components/UI/Modal/Modal';
+
+const withErrorHandler = WrappedComponent => {
   return props => {
     return (
-      <WrappedComponent {...props}/>
+      <Fragment>
+        <Modal>
+          
+        </Modal>
+        <WrappedComponent {...props} />
+      </Fragment>
     )
   }
 }
