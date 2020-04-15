@@ -18,16 +18,18 @@ const INGREDIENT_PRICES = {
 
 class BurgerBuilder extends Component {
   state = {
-    ingredients: {
-      salad: 0,
-      bacon: 0,
-      cheese: 0,
-      meat: 0
-    },
+    ingredients: null,
     totalPrice: 4,
     purchasable: false,
     order: false,
     loading: false
+  }
+
+  componentDidMount() {
+    axios.get('/ingredients.json')
+      .then(res => {
+        this.setState({ingredients: res.data});
+      })
   }
 
   orderHandler = () => {
@@ -104,14 +106,29 @@ class BurgerBuilder extends Component {
   };
 
   render() {
-    let orderSummary = (
-      <OrderSummary
-        state={this.state}
-        purchaseCancelled={this.purchaseCancelHandler}
-        purchaseContinued={this.purchaseContinueHandler} />
-    )
+    let orderSummary = <Spinner />
     if (this.state.loading) {
-      orderSummary = <Spinner />
+      orderSummary = (
+       <OrderSummary
+         state={this.state}
+         purchaseCancelled={this.purchaseCancelHandler}
+         purchaseContinued={this.purchaseContinueHandler} />
+      )
+    }
+
+    let burger = <Spinner />;
+    if (this.state.ingredients) {
+      burger = (
+        <Fragment>
+          <Burger ingredients={this.state.ingredients} />
+          <BuildControls
+            ingredientAdded={this.addIngredientHandler}
+            ingredientRemoved={this.removeIngredientHandler}
+            state={this.state}
+            purchasable={this.state.purchasable}
+            order={this.orderHandler}/>
+          </Fragment>
+      );
     }
 
     return (
@@ -121,13 +138,7 @@ class BurgerBuilder extends Component {
           hide={this.purchaseCancelHandler} >
           {orderSummary}
         </Modal>
-        <Burger ingredients={this.state.ingredients} />
-        <BuildControls
-          ingredientAdded={this.addIngredientHandler}
-          ingredientRemoved={this.removeIngredientHandler}
-          state={this.state}
-          purchasable={this.state.purchasable}
-          order={this.orderHandler}/>
+        {burger}
       </Fragment>
     );
   }
