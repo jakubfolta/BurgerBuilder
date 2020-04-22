@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Route } from 'react-router-dom';
 
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
@@ -6,6 +7,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Modal from '../../components/UI/Modal/Modal';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../withErrorHandler/withErrorHandler';
+import Checkout from '../Checkout/Checkout';
 import axios from '../../axios-orders';
 
 
@@ -144,6 +146,7 @@ class BurgerBuilder extends Component {
           {orderSummary}
         </Modal>
         {burger}
+        <Route path="/checkout" component={Checkout}/>
       </Fragment>
     );
   }

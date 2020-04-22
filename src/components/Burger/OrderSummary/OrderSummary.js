@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import Button from '../../UI/Button/Button';
 import PropTypes from 'prop-types';
@@ -32,7 +33,7 @@ class OrderSummary extends Component {
           clicked={this.props.purchaseCancelled} >Cancel</Button>
         <Button
           btnType="Success"
-          clicked={this.props.purchaseContinued} >Continue</Button>
+          clicked={this.props.purchaseContinued} ><Link to="/checkout">Continue</Link></Button>
       </Fragment>
     );
   }
