@@ -10,10 +10,23 @@ class Checkout extends Component {
       meat: 1,
     }
   }
+
+  continueHandler = () => {
+    this.props.history.push(this.props.match.url + '/form');
+  }
+
+  cancelHandler = () => {
+    this.props.history.goBack();
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div>
-        <CheckoutSummary ingredients={this.state.ingredients}/>
+        <CheckoutSummary
+          ingredients={this.state.ingredients}
+          checkoutContinued={this.continueHandler}
+          checkoutCancelled={this.cancelHandler} />
       </div>
     )
   }
