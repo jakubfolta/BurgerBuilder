@@ -19,7 +19,7 @@ class Checkout extends Component {
     const query = new URLSearchParams(this.props.location.search);
 
     for (let param of query.entries()) {
-      console.log(param[1]);
+      console.log(param[0]);
     }
   }
 
