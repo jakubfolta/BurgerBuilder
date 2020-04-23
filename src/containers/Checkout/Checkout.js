@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 class Checkout extends Component {
   state = {
-    ingredients: {}
+    ingredients: null
   }
 
   componentDidMount() {
@@ -19,7 +20,6 @@ class Checkout extends Component {
       queryIngredients[param[0]] = +param[1];
     }
     this.setState({ingredients: queryIngredients})
-    console.log(this.state);
   }
 
   continueHandler = () => {
@@ -31,14 +31,18 @@ class Checkout extends Component {
   }
 
   render() {
-    console.log(this.state);
-    console.log(this.props);
-    return (
-      <div>
+    let checkoutSummary = <Spinner />;
+    if (this.state.ingredients) {
+      checkoutSummary = (
         <CheckoutSummary
           ingredients={this.state.ingredients}
           checkoutContinued={this.continueHandler}
           checkoutCancelled={this.cancelHandler} />
+      )
+    }
+    return (
+      <div>
+        {checkoutSummary}
       </div>
     )
   }

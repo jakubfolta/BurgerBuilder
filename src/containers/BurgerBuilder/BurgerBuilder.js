@@ -133,7 +133,7 @@ class BurgerBuilder extends Component {
             state={this.state}
             purchasable={this.state.purchasable}
             order={this.orderHandler}/>
-          </Fragment>
+        </Fragment>
       );
       orderSummary = (
         <OrderSummary
