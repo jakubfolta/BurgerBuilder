@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 
-import classes from './Checkout.module.css';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 
 class Checkout extends Component {
+  state = {
+    ingredients: {
+      salad: 1,
+      cheese: 2,
+      meat: 1,
+    }
+  }
   render() {
     return (
-      <CheckoutSummary />
+      <div>
+        <CheckoutSummary ingredients={this.state.ingredients}/>
+      </div>
     )
   }
 }
