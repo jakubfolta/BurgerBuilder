@@ -10,10 +10,12 @@ class Checkout extends Component {
 
   componentDidMount() {
     const queryParams = new URLSearchParams(this.props.location.search);
+    const ingredients = {}
 
     for (let param of queryParams.entries()) {
-
+      ingredients[param[0]] = +param[1];
     }
+    console.log(ingredients);
   }
 
   continueHandler = () => {
