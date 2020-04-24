@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import ContactData from './ContactData/ContactData';
 
 class Checkout extends Component {
   state = {
@@ -19,7 +21,7 @@ class Checkout extends Component {
   }
 
   continueHandler = () => {
-    this.props.history.replace('checkout/contact-data');
+    this.props.history.replace('checkout/contact');
   }
 
   cancelHandler = () => {
@@ -39,6 +41,7 @@ class Checkout extends Component {
     return (
       <div>
         {checkoutSummary}
+        <Route path={this.props.match.path + '/contact'} component={ContactData} />
       </div>
     )
   }
