@@ -8,19 +8,6 @@ class Checkout extends Component {
     ingredients: null
   }
 
-  componentDidMount() {
-    this.parseQuery();
-  }
-
-  parseQuery = () => {
-    const query = new URLSearchParams(this.props.location.search);
-    let queryIngredients = {}
-
-    for (let param of query.entries()) {
-      queryIngredients[param[0]] = +param[1];
-    }
-    this.setState({ingredients: queryIngredients})
-  }
 
   continueHandler = () => {
     this.props.history.replace('checkout/contact-data');
@@ -49,3 +36,40 @@ class Checkout extends Component {
 }
 
 export default Checkout;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// componentDidMount() {
+//   this.parseQuery();
+// }
+//
+// parseQuery = () => {
+//   const query = new URLSearchParams(this.props.location.search);
+//   let queryIngredients = {}
+//
+//   for (let param of query.entries()) {
+//     queryIngredients[param[0]] = +param[1];
+//   }
+//   this.setState({ingredients: queryIngredients})
+// }
