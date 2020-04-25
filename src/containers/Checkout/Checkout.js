@@ -10,7 +10,12 @@ class Checkout extends Component {
     ingredients: null
   }
 
-  
+  componentDidMount() {
+    const queryParams = new URLSearchParams(this.props.location.search);
+    const queryIngredients = {}
+
+    
+  }
 
   continueHandler = () => {
     this.props.history.replace('checkout/contact');
