@@ -10,7 +10,15 @@ class Checkout extends Component {
     ingredients: null
   }
 
-  
+  componentDidMount() {
+    const queryParams = new URLSearchParams(this.props.location.search);
+    const queryIngredients = {}
+
+    for (let param of queryParams.entries()) {
+      queryIngredients[param[0]] = +param[1];
+    }
+    this.setState({ingredients: queryIngredients})
+  }
 
   continueHandler = () => {
     this.props.history.replace('checkout/contact');
