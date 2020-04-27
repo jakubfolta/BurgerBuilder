@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import classes from './ContactData.module.css';
 import Button from '../../../components/UI/Button/Button';
 import axios from '../../../axios-orders';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
 class ContactData extends Component {
   state = {
@@ -45,8 +46,7 @@ class ContactData extends Component {
   }
 
   render() {
-    let contactData = 
-    return (
+    let contactData = this.state.loading ? <Spinner /> :
       <div className={classes.ContactData}>
         <h3>Enter your contact details.</h3>
         <form>
@@ -56,6 +56,11 @@ class ContactData extends Component {
           <input className={classes.Input} type="text" name="postal" placeholder="Your Postal Code" />
           <Button btnType="Success" clicked={this.orderHandler}>Place order</Button>
         </form>
+      </div>
+
+    return (
+      <div>
+        {contactData}
       </div>
     );
   }
