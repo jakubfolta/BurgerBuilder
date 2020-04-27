@@ -39,16 +39,16 @@ class ContactData extends Component {
     axios.post('/orders.json', order)
       .then(response => {
         this.setState({loading: false})
+        this.props.history.push('/');
       })
       .catch(error => {
         this.setState({loading: false})
-      })
+      });
   }
 
   render() {
     let contactData = this.state.loading ? <Spinner /> :
-      <div className={classes.ContactData}>
-        <h3>Enter your contact details.</h3>
+      (
         <form>
           <input className={classes.Input} type="text" name="name" placeholder="Your Name" />
           <input className={classes.Input} type="email" name="email" placeholder="Your Mail" />
@@ -56,10 +56,11 @@ class ContactData extends Component {
           <input className={classes.Input} type="text" name="postal" placeholder="Your Postal Code" />
           <Button btnType="Success" clicked={this.orderHandler}>Place order</Button>
         </form>
-      </div>
+      )
 
     return (
-      <div>
+      <div className={classes.ContactData}>
+        <h3>Enter your contact details.</h3>
         {contactData}
       </div>
     );
