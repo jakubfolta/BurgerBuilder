@@ -21,7 +21,9 @@ const Order = props => {
       style={{
         textTransform: 'capitalize',
         display: 'inline-block',
-        margin: '0 8px'
+        margin: '0 8px',
+        padding: '5px',
+        border: '1px solid #ccc'
       }}
       key={i.name}>{i.name} ({i.amount})</span>;
   })
