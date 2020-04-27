@@ -40,8 +40,6 @@ class Orders extends Component {
     return (
       <div>
         {orders}
-        <Order />
-        <Order />
       </div>
     );
   }
