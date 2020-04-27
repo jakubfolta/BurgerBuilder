@@ -17,7 +17,6 @@ class Checkout extends Component {
     for (let param of query.entries()) {
       queryIngredients[param[0]] = +param[1];
     }
-
     this.setState({ingredients: queryIngredients});
   }
 
@@ -42,7 +41,7 @@ class Checkout extends Component {
     return (
       <div>
         {checkoutSummary}
-        <Route path={this.props.match.path + '/contact'} component={ContactData} />
+        <Route path={this.props.match.path + '/contact'} render={() => (<ContactData ingredients={this.state.ingredients} />)} />
       </div>
     )
   }

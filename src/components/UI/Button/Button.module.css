@@ -11,15 +11,16 @@
     font-weight: bold;
 }
 
+.Button:active { transform: translateY(2px); }
+
 .Button:first-of-type {
     margin-left: 0;
     padding-left: 0;
 }
 
-.Success {
-    color: #5C9210;
-}
+.Success { color: #5C9210; }
+.Success:active { color: hsl(84, 79%, 40%); }
 
-.Danger {
-    color: #944317;
-}
+
+.Danger { color: #944317; }
+.Danger:active { color: hsl(20, 73%, 40%); }
