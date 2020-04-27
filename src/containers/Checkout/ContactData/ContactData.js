@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import classes from './ContactData.module.css';
 import Button from '../../../components/UI/Button/Button';
+import axios from '../../../axios-orders';
 
 class ContactData extends Component {
   state = {
@@ -10,15 +11,41 @@ class ContactData extends Component {
     address: {
       street: '',
       postalCode: ''
-  }
+  },
+  loading: false
 }
 
   orderHandler = (e) => {
     e.preventDefault();
-    console.log(this.props.ingredients);
+
+    this.setState({loading: true})
+
+    const order = {
+      ingredients: this.props.ingredients,
+      totalPrice: this.props.price,
+      customer: {
+        name: 'Jake F',
+        address: {
+          street: 'Teststreet 1',
+          zipCode: '43245',
+          country: 'UK'
+        },
+        email: 'test@test.com'
+      },
+      deliveryMethod: 'fastest'
+    };
+
+    axios.post('/orders.json', order)
+      .then(response => {
+        this.setState({loading: false})
+      })
+      .catch(error => {
+        this.setState({loading: false})
+      })
   }
 
   render() {
+    let contactData = 
     return (
       <div className={classes.ContactData}>
         <h3>Enter your contact details.</h3>
