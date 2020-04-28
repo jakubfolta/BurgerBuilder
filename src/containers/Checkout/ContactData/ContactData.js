@@ -51,10 +51,10 @@ class ContactData extends Component {
     let contactData = this.state.loading ? <Spinner /> :
       (
         <form>
-          <Input inputType="text" name="name" placeholder="Your Name" />
-          <Input inputType="text" name="email" placeholder="Your Mail" />
-          <Input inputType="text" name="street" placeholder="Your Street" />
-          <Input inputType="text" name="postal" placeholder="Your Postal Code" />
+          <Input inputType="input" type="text" label="Name" name="name" placeholder="Your Name" />
+          <Input inputType="input" type="email" label="Email" name="email" placeholder="Your Mail" />
+          <Input inputType="input" type="text" label="Street" name="street" placeholder="Your Street" />
+          <Input inputType="input" type="text" label="Postal Code" name="postal" placeholder="Your Postal Code" />
           <Button btnType="Success" clicked={this.orderHandler}>Place order</Button>
         </form>
       )
