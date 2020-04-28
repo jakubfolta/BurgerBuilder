@@ -8,14 +8,23 @@ import Input from '../../../components/UI/Input/Input';
 
 class ContactData extends Component {
   state = {
-    name: '',
-    email: '',
-    address: {
-      street: '',
-      postalCode: ''
-  },
-  loading: false
-}
+    orderForm: {
+      name: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your name'
+        }
+
+      },
+      street: 'Teststreet 1',
+      zipCode: '43245',
+      country: 'UK',
+      email: 'test@test.com',
+      deliveryMethod: 'fastest'
+    },
+    loading: false
+  }
 
   orderHandler = (e) => {
     e.preventDefault();
@@ -25,16 +34,7 @@ class ContactData extends Component {
     const order = {
       ingredients: this.props.ingredients,
       totalPrice: this.props.price,
-      customer: {
-        name: 'Jake F',
-        address: {
-          street: 'Teststreet 1',
-          zipCode: '43245',
-          country: 'UK'
-        },
-        email: 'test@test.com'
-      },
-      deliveryMethod: 'fastest'
+
     };
 
     axios.post('/orders.json', order)
@@ -51,10 +51,10 @@ class ContactData extends Component {
     let contactData = this.state.loading ? <Spinner /> :
       (
         <form>
-          <Input inputType="input" type="text" label="Name" name="name" placeholder="Your Name" />
-          <Input inputType="input" type="email" label="Email" name="email" placeholder="Your Mail" />
-          <Input inputType="input" type="text" label="Street" name="street" placeholder="Your Street" />
-          <Input inputType="input" type="text" label="Postal Code" name="postal" placeholder="Your Postal Code" />
+          <Input inputtype="input" type="text" label="Name" name="name" placeholder="Your Name" />
+          <Input inputtype="input" type="email" label="Email" name="email" placeholder="Your Mail" />
+          <Input inputtype="input" type="text" label="Street" name="street" placeholder="Your Street" />
+          <Input inputtype="input" type="text" label="Postal Code" name="postal" placeholder="Your Postal Code" />
           <Button btnType="Success" clicked={this.orderHandler}>Place order</Button>
         </form>
       )
