@@ -14,14 +14,49 @@ class ContactData extends Component {
         elementConfig: {
           type: 'text',
           placeholder: 'Your name'
-        }
-
+        },
+        value: ''
       },
-      street: 'Teststreet 1',
-      zipCode: '43245',
-      country: 'UK',
-      email: 'test@test.com',
-      deliveryMethod: 'fastest'
+      street: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your name'
+        },
+        value: ''
+      },
+      zipCode: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your name'
+        },
+        value: ''
+      },
+      country: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your name'
+        },
+        value: ''
+      },
+      email: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your name'
+        },
+        value: ''
+      },
+      deliveryMethod: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your name'
+        },
+        value: ''
+      },
     },
     loading: false
   }
