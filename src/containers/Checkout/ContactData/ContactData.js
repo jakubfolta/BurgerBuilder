@@ -21,7 +21,7 @@ class ContactData extends Component {
         elementType: 'input',
         elementConfig: {
           type: 'text',
-          placeholder: 'Your name'
+          placeholder: 'Street'
         },
         value: ''
       },
@@ -29,7 +29,7 @@ class ContactData extends Component {
         elementType: 'input',
         elementConfig: {
           type: 'text',
-          placeholder: 'Your name'
+          placeholder: 'ZIP'
         },
         value: ''
       },
@@ -37,23 +37,25 @@ class ContactData extends Component {
         elementType: 'input',
         elementConfig: {
           type: 'text',
-          placeholder: 'Your name'
+          placeholder: 'Country'
         },
         value: ''
       },
       email: {
         elementType: 'input',
         elementConfig: {
-          type: 'text',
-          placeholder: 'Your name'
+          type: 'email',
+          placeholder: 'Your email'
         },
         value: ''
       },
       deliveryMethod: {
-        elementType: 'input',
+        elementType: 'select',
         elementConfig: {
-          type: 'text',
-          placeholder: 'Your name'
+          options: [
+            {value: 'fastest', displayValue: 'Fastest'},
+            {value: 'cheapest', displayValue: 'Cheapest'}
+          ]
         },
         value: ''
       },
@@ -86,7 +88,7 @@ class ContactData extends Component {
     let contactData = this.state.loading ? <Spinner /> :
       (
         <form>
-          <Input inputtype="input" type="text" label="Name" name="name" placeholder="Your Name" />
+          <Input elementType="..." elementConfig="..." value="..." />
           <Input inputtype="input" type="email" label="Email" name="email" placeholder="Your Mail" />
           <Input inputtype="input" type="text" label="Street" name="street" placeholder="Your Street" />
           <Input inputtype="input" type="text" label="Postal Code" name="postal" placeholder="Your Postal Code" />
