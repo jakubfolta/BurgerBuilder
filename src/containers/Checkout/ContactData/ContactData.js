@@ -101,6 +101,7 @@ class ContactData extends Component {
             elementType={i.config.elementType}
             elementConfig={i.config.elementConfig}
             value={i.config.value} />)}
+
           <Button btnType="Success" clicked={this.orderHandler}>Place order</Button>
         </form>
       )
