@@ -4,12 +4,16 @@ import classes from './Input.module.css';
 
 const Input = props => {
   let inputElement = null;
+  const inputClasses = [classes.InputElement];
+  if (!props.validity) {
+    inputClasses.push(classes.NotValid);
+  }
 
   switch (props.elementType) {
     case ('input'):
       inputElement = <input
         onChange={props.change}
-        className={classes.InputElement}
+        className={inputClasses.join(' ')}
         {...props.elementConfig}
         value={props.value} />;
       break;
