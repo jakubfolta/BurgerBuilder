@@ -157,7 +157,8 @@ class ContactData extends Component {
             elementType={i.config.elementType}
             elementConfig={i.config.elementConfig}
             value={i.config.value}
-            validity={i.config.validity} />)}
+            validity={i.config.validity}
+            shouldValidate={i.config.validation}  />)}
 
           <Button btnType="Success">Place order</Button>
         </form>
