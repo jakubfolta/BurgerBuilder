@@ -96,10 +96,11 @@ class ContactData extends Component {
     let contactData = this.state.loading ? <Spinner /> :
       (
         <form>
-          <Input elementType="..." elementConfig="..." value="..." />
-          <Input inputtype="input" type="email" label="Email" name="email" placeholder="Your Mail" />
-          <Input inputtype="input" type="text" label="Street" name="street" placeholder="Your Street" />
-          <Input inputtype="input" type="text" label="Postal Code" name="postal" placeholder="Your Postal Code" />
+          {formElementArray.map(i => <Input
+            key={i.id}
+            elementType={i.config.elementType}
+            elementConfig={i.config.elementConfig}
+            value={i.config.value} />)}
           <Button btnType="Success" clicked={this.orderHandler}>Place order</Button>
         </form>
       )
