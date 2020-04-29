@@ -68,10 +68,15 @@ class ContactData extends Component {
 
     this.setState({loading: true})
 
+    const contactForm = {};
+    for (let el in this.state.orderForm) {
+      contactForm[el] = this.state.orderForm[el].value;
+    }
+
     const order = {
       ingredients: this.props.ingredients,
       totalPrice: this.props.price,
-
+      orderData: contactForm
     };
 
     axios.post('/orders.json', order)

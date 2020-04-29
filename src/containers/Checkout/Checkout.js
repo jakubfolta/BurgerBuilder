@@ -51,7 +51,7 @@ class Checkout extends Component {
           <ContactData
             ingredients={this.state.ingredients}
             price={this.state.price}
-            {...props} 
+            {...props}
           />)}
         />
       </div>
