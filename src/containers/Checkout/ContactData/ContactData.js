@@ -19,7 +19,8 @@ class ContactData extends Component {
         validation: {
           required: true
         },
-        validity: false
+        validity: false,
+        touched: false
       },
       street: {
         elementType: 'input',
@@ -31,7 +32,8 @@ class ContactData extends Component {
         validation: {
           required: true
         },
-        validity: false
+        validity: false,
+        touched: false
       },
       zipCode: {
         elementType: 'input',
@@ -45,7 +47,8 @@ class ContactData extends Component {
           minLength: 5,
           maxLength: 5
         },
-        validity: false
+        validity: false,
+        touched: false
       },
       country: {
         elementType: 'input',
@@ -57,7 +60,8 @@ class ContactData extends Component {
         validation: {
           required: true
         },
-        validity: false
+        validity: false,
+        touched: false
       },
       email: {
         elementType: 'input',
@@ -69,7 +73,8 @@ class ContactData extends Component {
         validation: {
           required: true
         },
-        validity: false
+        validity: false,
+        touched: false
       },
       deliveryMethod: {
         elementType: 'select',
@@ -132,6 +137,7 @@ class ContactData extends Component {
     updatedFormElement.value = e.target.value;
     if (updatedFormElement.elementType !== 'select') {
       updatedFormElement.validity = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+      updatedFormElement.touched = true;
     }
     updatedOrderForm[id] = updatedFormElement;
 
@@ -158,7 +164,8 @@ class ContactData extends Component {
             elementConfig={i.config.elementConfig}
             value={i.config.value}
             validity={i.config.validity}
-            shouldValidate={i.config.validation}  />)}
+            shouldValidate={i.config.validation}
+            touched={}  />)}
 
           <Button btnType="Success">Place order</Button>
         </form>

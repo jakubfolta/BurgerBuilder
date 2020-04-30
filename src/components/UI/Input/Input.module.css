@@ -18,10 +18,18 @@
   padding: 6px 10px;
   display: block;
   width: 100%;
+  color: black;
+  font-weight: bold;
+}
+
+.InputElement::placeholder {
+  color: black;
+  font-weight: bold;
 }
 
 .NotValid {
   border: 2px solid red;
+  background-color: hsla(10, 67%, 50%, 0.77);
 }
 
 .InputElement:focus {
