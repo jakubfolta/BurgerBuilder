@@ -146,12 +146,14 @@ class ContactData extends Component {
 
   render() {
     const formElementArray = [];
-    for (let key in this.state.orderForm) {
-      formElementArray.push({
-        id: key,
-        config: this.state.orderForm[key]
-      })
-    }
+
+    // const formElementArray = [];
+    // for (let key in this.state.orderForm) {
+    //   formElementArray.push({
+    //     id: key,
+    //     config: this.state.orderForm[key]
+    //   })
+    // }
 
     let contactData = this.state.loading ? <Spinner /> :
       (
