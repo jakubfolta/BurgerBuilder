@@ -87,9 +87,12 @@ class ContactData extends Component {
             {value: 'cheapest', displayValue: 'Cheapest'}
           ]
         },
-        value: ''
+        value: 'fastest',
+        validation: {},
+        validity: true
       },
     },
+    formIsValid: false,
     loading: false
   }
 
@@ -122,6 +125,10 @@ class ContactData extends Component {
   checkValidity = (value, rules) => {
     let isValid = false;
 
+    if (!rules) {
+      return true // for "deliveryMethod" state object
+    }
+
     if (rules.required) {
       isValid = value.trim() !== '';
     }
@@ -148,11 +155,17 @@ class ContactData extends Component {
     }
     updatedOrderForm[id] = updatedFormElement;
 
-    this.setState({orderForm: updatedOrderForm})
+    let validForm = true;
+    for (let id in updatedOrderForm) {
+        validForm = updatedOrderForm[id].validity && validForm;
+    }
+
+    this.setState({orderForm: updatedOrderForm, formIsValid: validForm})
   }
 
   render() {
     const formElementArray = [];
+    console.log(this.state.orderForm.deliveryMethod.value)
     for (let key in this.state.orderForm) {
       formElementArray.push({
         id: key,
@@ -174,7 +187,7 @@ class ContactData extends Component {
             shouldValidate={i.config.validation}
             touched={i.config.touched} />)}
 
-          <Button btnType="Success">Place order</Button>
+          <Button btnType="Success" disabled={!this.state.formIsValid}>Place order</Button>
         </form>
       )
 
