@@ -17,7 +17,8 @@ class ContactData extends Component {
         },
         value: '',
         validation: {
-          required: true
+          required: true,
+          minLength: 3
         },
         validity: false,
         touched: false
@@ -30,7 +31,8 @@ class ContactData extends Component {
         },
         value: '',
         validation: {
-          required: true
+          required: true,
+          minLength: 3
         },
         validity: false,
         touched: false
@@ -58,7 +60,8 @@ class ContactData extends Component {
         },
         value: '',
         validation: {
-          required: true
+          required: true,
+          minLength: 3
         },
         validity: false,
         touched: false
@@ -121,6 +124,10 @@ class ContactData extends Component {
 
     if (rules.required) {
       isValid = value.trim() !== '';
+    }
+
+    if (rules.minLength) {
+      isValid = value.trim().length >= rules.minLength;
     }
 
     if (rules.minLength && rules.maxLength) {
