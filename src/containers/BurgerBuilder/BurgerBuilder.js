@@ -29,13 +29,13 @@ class BurgerBuilder extends Component {
   }
 
   componentDidMount() {
-    axios.get('/ingredients.json')
-      .then(res => {
-        this.setState({ingredients: res.data});
-      })
-      .catch(error => {
-        this.setState({error: true})
-      })
+    // axios.get('/ingredients.json')
+    //   .then(res => {
+    //     this.setState({ingredients: res.data});
+    //   })
+    //   .catch(error => {
+    //     this.setState({error: true})
+    //   })
   }
 
   orderHandler = () => {
@@ -100,21 +100,23 @@ class BurgerBuilder extends Component {
     let orderSummary = null;
     let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
 
-    if (this.state.ingredients) {
+    if (this.props.ingredients) {
       burger = (
         <Fragment>
-          <Burger ingredients={this.state.ingredients} />
+          <Burger ingredients={this.props.ingredients} />
           <BuildControls
-            ingredientAdded={this.addIngredientHandler}
-            ingredientRemoved={this.removeIngredientHandler}
-            state={this.state}
+            ingredientAdded={this.props.onAddIngredientHandler}
+            ingredientRemoved={this.props.onRemoveIngredientHandler}
+            ingredients={this.props.ingredients}
+            price={this.props.totalPrice}
             purchasable={this.state.purchasable}
             order={this.orderHandler}/>
         </Fragment>
       );
       orderSummary = (
         <OrderSummary
-          state={this.state}
+          ingredients={this.props.ingredients}
+          price={this.props.totalPrice}
           purchaseCancelled={this.purchaseCancelHandler}
           purchaseContinued={this.purchaseContinueHandler} />
       )
@@ -145,8 +147,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddIngredientHandler: () => dispatch({type: actionTypes.ADD_INGREDIENT}),
-    onRemoveIngredientHandler: () => dispatch({type: actionTypes.REMOVE_INGREDIENT})
+    onAddIngredientHandler: (ingType) => dispatch({type: actionTypes.ADD_INGREDIENT, ingredientName: ingType}),
+    onRemoveIngredientHandler: (ingType) => dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingType})
   }
 }
 

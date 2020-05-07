@@ -15,14 +15,14 @@ class BuildControls extends Component {
   render() {
     return (
       <div className={classes.BuildControls}>
-      <h3>Current price: <strong>{this.props.state.totalPrice.toFixed(2)}</strong></h3>
+      <h3>Current price: <strong>{this.props.price.toFixed(2)}</strong></h3>
       {controls.map(ctrl => (
         <BuildControl
           key={ctrl.label}
           label={ctrl.label}
           add={() => this.props.ingredientAdded(ctrl.type)}
           remove={() => this.props.ingredientRemoved(ctrl.type)}
-          disabled={!this.props.state.ingredients[ctrl.type]} />
+          disabled={!this.props.ingredients[ctrl.type]} />
         ))}
       <button
         className={classes.OrderButton}
@@ -34,7 +34,6 @@ class BuildControls extends Component {
 }
 
 BuildControls.propTypes = {
-  state: PropTypes.object.isRequired,
   ingredientAdded: PropTypes.func.isRequired,
   ingredientRemoved: PropTypes.func.isRequired,
   purchasable: PropTypes.bool.isRequired,

@@ -9,11 +9,11 @@ class OrderSummary extends Component {
     console.log('[OrderSummary] will update');
   }
   render() {
-    const ingredientSummary = Object.keys(this.props.state.ingredients)
+    const ingredientSummary = Object.keys(this.props.ingredients)
     .map(el => {
       return (
         <li key={el}>
-          <span style={{textTransform: 'capitalize'}}>{el}</span>: {this.props.state.ingredients[el]}
+          <span style={{textTransform: 'capitalize'}}>{el}</span>: {this.props.ingredients[el]}
         </li>
       )
     })
@@ -25,7 +25,7 @@ class OrderSummary extends Component {
         <ul>
           {ingredientSummary}
         </ul>
-        <p><strong>Price: {(this.props.state.totalPrice).toFixed(2)}</strong></p>
+        <p><strong>Price: {(this.props.price).toFixed(2)}</strong></p>
         <p>Continue to checkout?</p>
         <Button
           btnType="Danger"
@@ -39,7 +39,6 @@ class OrderSummary extends Component {
 }
 
 OrderSummary.propTypes = {
-  state: PropTypes.object.isRequired,
   purchaseCancelled: PropTypes.func.isRequired,
   purchaseContinued: PropTypes.func.isRequired
 };
