@@ -35,6 +35,7 @@ class Checkout extends Component {
   }
 
   render() {
+    console.log(this.props);
     let checkoutSummary = <Spinner />;
     if (this.state.ingredients) {
       checkoutSummary = (
@@ -51,6 +52,7 @@ class Checkout extends Component {
           <ContactData
             ingredients={this.state.ingredients}
             price={this.state.price}
+            {...this.props}
             {...props}
           />)}
         />
