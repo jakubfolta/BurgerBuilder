@@ -110,7 +110,7 @@ class ContactData extends Component {
 
     const order = {
       ingredients: this.props.ingredients,
-      totalPrice: this.props.price,
+      totalPrice: this.props.totalPrice,
       orderData: contactForm
     };
 
@@ -167,7 +167,6 @@ class ContactData extends Component {
 
   render() {
     const formElementArray = [];
-    console.log(this.state.orderForm.deliveryMethod.value)
     for (let key in this.state.orderForm) {
       formElementArray.push({
         id: key,
@@ -202,4 +201,11 @@ class ContactData extends Component {
   }
 }
 
-export default ContactData;
+const mapStateToProps = state => {
+  return {
+    ingredients: state.ingredients,
+    totalPrice: state.totalPrice
+  }
+}
+
+export default connect(mapStateToProps)(withRouter(ContactData));
