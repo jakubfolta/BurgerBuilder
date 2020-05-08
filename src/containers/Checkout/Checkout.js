@@ -36,10 +36,10 @@ class Checkout extends Component {
   render() {
     console.log(this.props);
     let checkoutSummary = <Spinner />;
-    if (this.state.ingredients) {
+    if (this.props.ingredients) {
       checkoutSummary = (
         <CheckoutSummary
-          ingredients={this.state.ingredients}
+          ingredients={this.props.ingredients}
           checkoutContinued={this.continueHandler}
           checkoutCancelled={this.cancelHandler} />
       )
@@ -47,14 +47,7 @@ class Checkout extends Component {
     return (
       <div>
         {checkoutSummary}
-        <Route path={this.props.match.path + '/contact'} render={props => (
-          <ContactData
-            ingredients={this.state.ingredients}
-            price={this.state.price}
-            {...this.props}
-            {...props}
-          />)}
-        />
+        <Route path={this.props.match.path + '/contact'} component={ContactData} />
       </div>
     )
   }
@@ -62,8 +55,7 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
   return {
-    ingredients: state.ingredients,
-    totalPrice: state.totalPrice
+    ingredients: state.ingredients
   }
 }
 
