@@ -44,17 +44,19 @@ class BurgerBuilder extends Component {
     this.setState({order: false});
   };
 
-  purchaseContinueHandler = () => {
-    const queryParams = [];
+// REDUX IMPLEMENTED - NO NEED TO PASS QUERY PARAMS
 
-    for (let i in this.state.ingredients) {
-      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
-    }
-    queryParams.push('totalPrice=' + encodeURIComponent(this.state.totalPrice));
+  purchaseContinueHandler = () => {
+    // const queryParams = [];
+    //
+    // for (let i in this.state.ingredients) {
+    //   queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+    // }
+    // queryParams.push('totalPrice=' + encodeURIComponent(this.state.totalPrice));
 
     this.props.history.push({
       pathname: '/checkout',
-      search: '?' + queryParams.join('&')
+      // search: '?' + queryParams.join('&')
     })
   };
 

@@ -11,20 +11,22 @@ class Checkout extends Component {
     price: 0
   }
 
-  componentDidMount() {
-    const query = new URLSearchParams(this.props.location.search);
-    const queryIngredients = {};
-    let price = 0;
+// REDUX IMPLEMENTED - NO NEED FOR LIFECYCLE HOOKS
 
-    for (let param of query.entries()) {
-      if (param[0] === 'totalPrice') {
-        price = param[1];
-      } else {
-        queryIngredients[param[0]] = +param[1];
-      }
-    }
-    this.setState({ingredients: queryIngredients, price: price});
-  }
+  // componentDidMount() {
+  //   const query = new URLSearchParams(this.props.location.search);
+  //   const queryIngredients = {};
+  //   let price = 0;
+  //
+  //   for (let param of query.entries()) {
+  //     if (param[0] === 'totalPrice') {
+  //       price = param[1];
+  //     } else {
+  //       queryIngredients[param[0]] = +param[1];
+  //     }
+  //   }
+  //   this.setState({ingredients: queryIngredients, price: price});
+  // }
 
   continueHandler = () => {
     this.props.history.replace('checkout/contact');
