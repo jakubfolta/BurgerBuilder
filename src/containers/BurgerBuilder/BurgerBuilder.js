@@ -12,9 +12,7 @@ import * as actionCreators from '../../store/actions/index';
 
 class BurgerBuilder extends Component {
   state = {
-    order: false,
-    loading: false,
-    error: false
+    order: false
   }
 
   componentDidMount() {
@@ -56,7 +54,7 @@ class BurgerBuilder extends Component {
 
   render() {
     let orderSummary = null;
-    let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
+    let burger = this.props.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
 
     if (this.props.ingredients) {
       burger = (
@@ -79,10 +77,6 @@ class BurgerBuilder extends Component {
           purchaseContinued={this.purchaseContinueHandler} />
       )
     }
-    if (this.state.loading) {
-      orderSummary = <Spinner />
-    }
-
     return (
       <Fragment>
         <Modal
@@ -99,7 +93,8 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
   return {
     ingredients: state.ingredients,
-    totalPrice: state.totalPrice
+    totalPrice: state.totalPrice,
+    error: state.error
   }
 }
 

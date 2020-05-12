@@ -15,10 +15,16 @@ export const removeIngredient = (ingType) => {
   };
 };
 
-const ingredients = (ing) => {
+export const setIngredients = (ing) => {
   return {
     type: actionTypes.SET_INGREDIENTS,
     initIngredients: ing
+  };
+};
+
+export const setError = () => {
+  return {
+    type: actionTypes.SET_ERROR
   }
 }
 
@@ -26,10 +32,10 @@ export const initIngredients = () => {
   return dispatch => {
     axios.get('/ingredients.json')
       .then(res => {
-        return dispatch(ingredients(res.data));
+        return dispatch(setIngredients(res.data));
       })
-      // .catch(error => {
-      //   this.setState({error: true})
-      // })
+      .catch(error => {
+        return dispatch(setError())
+      })
   }
 }

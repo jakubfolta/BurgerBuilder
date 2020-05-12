@@ -3,7 +3,8 @@ import { updateObject } from './../utility';
 
 const initialState = {
   ingredients: null,
-  totalPrice: 4
+  totalPrice: 4,
+  error: false
 }
 
 const INGREDIENT_PRICES = {
@@ -29,6 +30,8 @@ const reducer = (state = initialState, action) => {
       totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]})
     case actionTypes.SET_INGREDIENTS:
       return updateObject(state, {ingredients: action.initIngredients})
+    case actionTypes.SET_ERROR:
+      return updateObject(state, {error: true})
     default:
       return state;
   }
