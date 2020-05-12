@@ -22,16 +22,20 @@ const reducer = (state = initialState, action) => {
         [action.ingredientName]: state.ingredients[action.ingredientName] + 1
       },
       totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]})
+
     case actionTypes.REMOVE_INGREDIENT:
       return updateObject(state, {ingredients: {
         ...state.ingredients,
         [action.ingredientName]: state.ingredients[action.ingredientName] - 1
     },
       totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]})
+
     case actionTypes.SET_INGREDIENTS:
-      return updateObject(state, {ingredients: action.initIngredients})
+      return updateObject(state, {ingredients: action.initIngredients, error: false})
+
     case actionTypes.SET_ERROR:
       return updateObject(state, {error: true})
+
     default:
       return state;
   }
