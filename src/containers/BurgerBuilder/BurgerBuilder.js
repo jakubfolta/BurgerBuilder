@@ -8,7 +8,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../withErrorHandler/withErrorHandler';
 import axios from '../../axios-orders';
-import * as actionCreators from '../../store/actions/burgerBuilder';
+import * as actionCreators from '../../store/actions/index';
 
 class BurgerBuilder extends Component {
   state = {
@@ -18,13 +18,7 @@ class BurgerBuilder extends Component {
   }
 
   componentDidMount() {
-    // axios.get('/ingredients.json')
-    //   .then(res => {
-    //     this.setState({ingredients: res.data});
-    //   })
-    //   .catch(error => {
-    //     this.setState({error: true})
-    //   })
+    this.props.onInitIngredients();
   }
 
   orderHandler = () => {
@@ -112,7 +106,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onAddIngredientHandler: (ingType) => dispatch(actionCreators.addIngredient(ingType)),
-    onRemoveIngredientHandler: (ingType) => dispatch(actionCreators.removeIngredient(ingType))
+    onRemoveIngredientHandler: (ingType) => dispatch(actionCreators.removeIngredient(ingType)),
+    onInitIngredients: () => dispatch(actionCreators.initIngredients())
   }
 }
 
