@@ -95,14 +95,11 @@ class ContactData extends Component {
         validity: true
       },
     },
-    formIsValid: false,
-    loading: false
+    formIsValid: false
   }
 
   orderHandler = (e) => {
     e.preventDefault();
-
-    this.props.onOrderStart();
 
     const contactForm = {};
     for (let el in this.state.orderForm) {
@@ -204,9 +201,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderStart: () => dispatch(orderActions.purchaseBurgerStart()),
     onOrderHandler: (id, order) => dispatch(orderActions.sendOrder(id, order))
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));

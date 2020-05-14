@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
@@ -34,22 +34,19 @@ class Checkout extends Component {
   }
 
   render() {
-    console.log(this.props);
-    let checkoutSummary = <Spinner />;
+    let checkoutSummary = <Redirect to="/"/>;
     if (this.props.ingredients) {
       checkoutSummary = (
-        <CheckoutSummary
-          ingredients={this.props.ingredients}
-          checkoutContinued={this.continueHandler}
-          checkoutCancelled={this.cancelHandler} />
+        <div>
+          <CheckoutSummary
+            ingredients={this.props.ingredients}
+            checkoutContinued={this.continueHandler}
+            checkoutCancelled={this.cancelHandler} />
+          <Route path={this.props.match.path + '/contact'} component={ContactData} />
+        </div>
       )
     }
-    return (
-      <div>
-        {checkoutSummary}
-        <Route path={this.props.match.path + '/contact'} component={ContactData} />
-      </div>
-    )
+    return checkoutSummary
   }
 }
 
