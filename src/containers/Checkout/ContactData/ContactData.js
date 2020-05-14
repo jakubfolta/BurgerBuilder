@@ -102,7 +102,7 @@ class ContactData extends Component {
   orderHandler = (e) => {
     e.preventDefault();
 
-    // this.setState({loading: true})
+    this.props.onOrderStart();
 
     const contactForm = {};
     for (let el in this.state.orderForm) {
@@ -114,7 +114,6 @@ class ContactData extends Component {
       totalPrice: this.props.totalPrice,
       orderData: contactForm
     };
-
     this.props.onOrderHandler(order);
   }
 
@@ -205,6 +204,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    onOrderStart: () => dispatch(orderActions.purchaseBurgerStart()),
     onOrderHandler: (id, order) => dispatch(orderActions.sendOrder(id, order))
   }
 }
