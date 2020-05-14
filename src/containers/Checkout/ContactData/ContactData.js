@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import classes from './ContactData.module.css';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import axios from '../../../axios-orders';
 import Input from '../../../components/UI/Input/Input';
 import * as orderActions from '../../../store/actions/index';
+import withErrorHandler from '../../withErrorHandler/withErrorHandler';
 
 class ContactData extends Component {
   state = {
@@ -166,7 +168,7 @@ class ContactData extends Component {
       })
     }
 
-    let contactData = this.state.loading ? <Spinner /> :
+    let contactData = this.props.loading ? <Spinner /> :
       (
         <form onSubmit={this.orderHandler}>
           {formElementArray.map(i => <Input
@@ -196,7 +198,8 @@ class ContactData extends Component {
 const mapStateToProps = state => {
   return {
     ingredients: state.ingredients,
-    totalPrice: state.totalPrice
+    totalPrice: state.totalPrice,
+    loading: state.loading
   }
 }
 
@@ -206,4 +209,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactData);
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, axios));
