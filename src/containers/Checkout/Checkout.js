@@ -4,13 +4,8 @@ import { connect } from 'react-redux';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
-import * as orderActions from '../../store/actions/index';
 
 class Checkout extends Component {
-
-  componentWillMount() {
-    this.props.onPurchaseInit();
-  }
 
 // REDUX IMPLEMENTED - NO NEED FOR LIFECYCLE HOOKS
 
@@ -63,10 +58,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onPurchaseInit: () => dispatch(orderActions.purchaseInit())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect(mapStateToProps)(Checkout);
