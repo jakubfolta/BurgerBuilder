@@ -13,6 +13,9 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, {loading: true})
 
     case actionTypes.PURCHASE_BURGER_SUCCESS:
+      const newOrder = {...action.orderData};
+      newOrder['id'] = action.orderId;
+
       return updateObject(state, {
         error: false,
         loading: false,
