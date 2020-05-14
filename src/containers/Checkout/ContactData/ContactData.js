@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import classes from './ContactData.module.css';
 import Button from '../../../components/UI/Button/Button';
-import axios from '../../../axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import * as orderActions from '../../../store/actions/index';
@@ -101,7 +100,7 @@ class ContactData extends Component {
   orderHandler = (e) => {
     e.preventDefault();
 
-    this.setState({loading: true})
+    // this.setState({loading: true})
 
     const contactForm = {};
     for (let el in this.state.orderForm) {
@@ -114,14 +113,7 @@ class ContactData extends Component {
       orderData: contactForm
     };
 
-    axios.post('/orders.json', order)
-      .then(response => {
-        this.setState({loading: false})
-        this.props.history.push('/');
-      })
-      .catch(error => {
-        this.setState({loading: false})
-      });
+    this.props.onOrderHandler(order);
   }
 
   checkValidity = (value, rules) => {
@@ -210,7 +202,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderHandler: () => dispatch(orderActions.sendOrder())
+    onOrderHandler: (id, order) => dispatch(orderActions.sendOrder(id, order))
   }
 }
 
