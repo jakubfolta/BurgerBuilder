@@ -4,8 +4,13 @@ import { connect } from 'react-redux';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
+import * as orderActions from '../../store/actions/index';
 
 class Checkout extends Component {
+
+  componentWillMount() {
+    this.props.onPurchaseInit();
+  }
 
 // REDUX IMPLEMENTED - NO NEED FOR LIFECYCLE HOOKS
 
@@ -33,10 +38,12 @@ class Checkout extends Component {
   }
 
   render() {
-    let checkoutSummary = <Redirect to="/"/>;
+    let checkoutSummary = <Redirect to="/" />;
     if (this.props.ingredients) {
+      const purchasedRedirect = this.props.purchased ? <Redirect to="/" /> : null
       checkoutSummary = (
         <div>
+          {purchasedRedirect}
           <CheckoutSummary
             ingredients={this.props.ingredients}
             checkoutContinued={this.continueHandler}
@@ -51,8 +58,15 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
   return {
-    ingredients: state.ingredients
+    ingredients: state.bur.ingredients,
+    purchased: state.ord.purchased
   }
 }
 
-export default connect(mapStateToProps)(Checkout);
+const mapDispatchToProps = dispatch => {
+  return {
+    onPurchaseInit: () => dispatch(orderActions.purchaseInit())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

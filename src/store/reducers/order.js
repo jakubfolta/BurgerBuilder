@@ -4,7 +4,7 @@ import { updateObject } from '../utility';
 const initialState = {
   orders: [],
   loading: false,
-  error: false
+  purchased: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -20,11 +20,15 @@ const reducer = (state = initialState, action) => {
       // newOrder['id'] = action.orderId; // possible option
       return updateObject(state, {
         loading: false,
-        orders: state.orders.concat(newOrder)
+        orders: state.orders.concat(newOrder),
+        purchased: true
       })
 
     case actionTypes.PURCHASE_BURGER_FAIL:
       return updateObject(state, {loading: false})
+
+    case actionTypes.PURCHASE_INIT:
+      return updateObject(state, {purchased: false})
 
     default:
       return state;
