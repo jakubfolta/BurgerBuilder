@@ -10,14 +10,22 @@ export const fetchOrders = () => {
   }
 }
 
-export const fetchOrdersSuccess = () => {
+export const fetchOrdersStart = () => {
   return {
-    type: actionTypes.FETCH_ORDERS_SUCCESS
+    type: actionTypes.FETCH_ORDERS_START
   }
 }
 
-export const fetchOrdersFail = () => {
+export const fetchOrdersSuccess = (orders) => {
   return {
-    type: actionTypes.FETCH_ORDERS_FAIL
+    type: actionTypes.FETCH_ORDERS_SUCCESS,
+    orders: orders
+  }
+}
+
+export const fetchOrdersFail = (error) => {
+  return {
+    type: actionTypes.FETCH_ORDERS_FAIL,
+    error: error
   }
 }
