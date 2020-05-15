@@ -6,9 +6,6 @@ export {
 
 export {
   sendOrder,
-  purchaseInit
-} from './order';
-
-export {
+  purchaseInit,
   fetchOrders
-} from './fetchedOrders';
+} from './order';
