@@ -8,3 +8,7 @@ export {
   sendOrder,
   purchaseInit
 } from './order';
+
+export {
+  fetchOrders
+} from './fetchedOrders';
