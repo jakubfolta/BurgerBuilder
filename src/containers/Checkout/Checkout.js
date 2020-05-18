@@ -33,12 +33,9 @@ class Checkout extends Component {
   }
 
   render() {
-
-
-
-    // let checkoutSummary = <Redirect to="/" />;
-    // if (this.props.ingredients) {
-    //   const purchasedRedirect = this.props.purchased ? <Redirect to="/" /> : null
+    let checkoutSummary = <Redirect to="/" />
+    if (this.props.ingredients) {
+      const purchasedRedirect = this.props.purchased ? <Redirect to="/" /> : null;
       checkoutSummary = (
         <div>
           {purchasedRedirect}
@@ -46,10 +43,10 @@ class Checkout extends Component {
             ingredients={this.props.ingredients}
             checkoutContinued={this.continueHandler}
             checkoutCancelled={this.cancelHandler} />
-          <Route path={this.props.match.path + '/contact'} component={ContactData} />
-        </div>
-      )
-    }
+            <Route path={this.props.match.path + '/contact'} component={ContactData} />
+          </div>
+        )
+      }
     return checkoutSummary
   }
 }
