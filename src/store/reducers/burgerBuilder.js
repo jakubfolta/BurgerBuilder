@@ -48,8 +48,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.REMOVE_INGREDIENT: return removeIngredient(state, action);
     case actionTypes.SET_INGREDIENTS: return setIngredients(state, action);
     case actionTypes.SET_ERROR: return setError(state, action);
-    default:
-      return state;
+    default: return state;
   }
 }
 

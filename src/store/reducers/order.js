@@ -59,8 +59,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_ORDERS_START: return fetchStart(state, action);
     case actionTypes.FETCH_ORDERS_SUCCESS: return fetchSuccess(state, action);
     case actionTypes.FETCH_ORDERS_FAIL: return fetchFail(state, action);
-    default:
-      return state;
+    default: return state;
   };
 };
 
