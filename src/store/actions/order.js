@@ -23,10 +23,10 @@ export const purchaseBurgerFail = (error) => {
   };
 };
 
-export const sendOrder = (order) => {
+export const sendOrder = (token, order) => {
   return dispatch => {
     dispatch(purchaseBurgerStart());
-    axios.post('/orders.json', order)
+    axios.post('/orders.json?auth=' + token, order)
     .then(response => {
       return dispatch(purchaseBurgerSuccess(response.data.name, order))
     })
