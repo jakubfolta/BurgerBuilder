@@ -23,8 +23,11 @@ class Layout extends Component {
   render() {
     return (
       <Fragment>
-        <Toolbar open={this.sideDrawerOpenHandler}/>
+        <Toolbar
+          isAuth={this.props.isAuthenticated}
+          open={this.sideDrawerOpenHandler} />
         <SideDrawer
+          isAuth={this.props.isAuthenticated}
           hide={this.sideDrawerCloseHandler}
           open={this.state.showSideDrawer} />
         <main className={classes.Content}>
@@ -37,7 +40,7 @@ class Layout extends Component {
 
 const mapStateToProps = state => {
   return {
-
+    isAuthenticated: state.auth.token !== null
   }
 }
 
