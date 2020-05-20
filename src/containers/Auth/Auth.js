@@ -109,7 +109,7 @@ class Auth extends Component {
       })
     }
 
-    const form = formElementArray.map(i => (
+    let form = this.props.loading ? <Spinner/> : formElementArray.map(i => (
       <Input
         key={i.id}
         change={(e) => this.inputChangedHandler(e, i.id)}
@@ -124,8 +124,8 @@ class Auth extends Component {
 
     return (
       <div className={classes.Auth}>
-        <h1>{this.state.isSignUp ? 'Sign up' : 'Sign in'}</h1>
         <form onSubmit={this.submitHandler}>
+          <h1>{this.state.isSignUp ? 'Sign up' : 'Sign in'}</h1>
           {form}
           <Button btnType="Success">Submit</Button>
         </form>
@@ -137,10 +137,16 @@ class Auth extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    loading: state.auth.loading
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     onAuthHandler: (email, password, method) => dispatch(authActions.auth(email, password, method))
   }
 }
 
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
