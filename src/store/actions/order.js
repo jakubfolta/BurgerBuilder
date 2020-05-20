@@ -43,10 +43,10 @@ export const purchaseInit = () => {
 }
 
 // FETCHED ORDERS
-export const fetchOrders = () => {
+export const fetchOrders = (token) => {
   return dispatch => {
     dispatch(fetchOrdersStart())
-    axios.get('orders.json')
+    axios.get('orders.json?auth=' + token)
     .then(res => {
       const fetchedOrders = [];
       for (let order in res.data) {
