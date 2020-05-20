@@ -120,13 +120,20 @@ class Auth extends Component {
         validity={i.config.validity}
         shouldValidate={i.config.validation}
         touched={i.config.touched} />
-    ))
+    ));
+
+    let error = this.props.error
+      ?
+    <p style={{color: 'hsl(7, 100%, 43%)', fontWeight: 'bold'}}>{this.props.error.message}</p>
+      :
+    null;
 
     return (
       <div className={classes.Auth}>
         <form onSubmit={this.submitHandler}>
           <h1>{this.state.isSignUp ? 'Sign up' : 'Sign in'}</h1>
           {form}
+          {error}
           <Button btnType="Success">Submit</Button>
         </form>
         <Button
