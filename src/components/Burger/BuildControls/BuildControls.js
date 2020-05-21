@@ -24,10 +24,10 @@ class BuildControls extends Component {
           remove={() => this.props.ingredientRemoved(ctrl.type)}
           disabled={!this.props.ingredients[ctrl.type]} />
         ))}
-      <button
-        className={classes.OrderButton}
-        disabled={!this.props.purchasable}
-        onClick={this.props.order} >ORDER NOW</button>
+        <button
+          className={classes.OrderButton}
+          disabled={!this.props.purchasable}
+          onClick={this.props.order} >{this.props.isAuthenticated ? 'ORDER NOW' : 'Sign up to order'}</button>
       </div>
     )
   }
