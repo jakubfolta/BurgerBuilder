@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Layout from './containers/Layout/Layout';
@@ -22,13 +22,15 @@ class App extends Component {
           <Route path="/orders" component={Orders} />
           <Route path="/checkout" component={Checkout} />
           <Route path="/logout" component={Logout} />
-          <Route path="/" component={BurgerBuilder} />
+          <Route path="/" exact component={BurgerBuilder} />
+          <Redirect to="/" />
         </Switch>
       )
       : (
         <Switch>
           <Route path="/auth" component={Auth} />
-          <Route path="/" component={BurgerBuilder} />
+          <Route path="/" exact component={BurgerBuilder} />
+          <Redirect to="/" />
         </Switch>
       )
 
