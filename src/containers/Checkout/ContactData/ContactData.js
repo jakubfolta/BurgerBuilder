@@ -112,7 +112,7 @@ class ContactData extends Component {
       orderData: contactForm,
       userId: this.props.userId
     };
-    this.props.onOrderHandler(this.props.token, order);
+    this.props.onOrderHandler(this.props.token, order, this.props.userId);
   }
 
   checkValidity = (value, rules) => {
@@ -215,7 +215,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderHandler: (token, order) => dispatch(orderActions.sendOrder(token, order))
+    onOrderHandler: (token, order, userId) => dispatch(orderActions.sendOrder(token, order, userId))
   };
 };
 
