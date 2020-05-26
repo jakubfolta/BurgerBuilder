@@ -206,7 +206,9 @@ const mapStateToProps = state => {
     ingredients: state.bur.ingredients,
     totalPrice: state.bur.totalPrice,
     loading: state.ord.loading,
-    token: state.auth.token
+    token: state.auth.token,
+    userId: state.auth.userId
+
   }
 }
 
