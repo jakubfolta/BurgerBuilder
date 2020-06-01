@@ -79,7 +79,9 @@ export const checkAuthState = () => {
     const token = localStorage.getItem('token');
     if (!token) {
       dispatch(logout());
-    } 
+    } else {
+      const expirationDate = new Date(localStorage.getItem('expirationDate'));
+        
     }
   };
 }
