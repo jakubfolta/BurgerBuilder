@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import classes from './ContactData.module.css';
@@ -8,6 +8,7 @@ import axios from '../../../axios-orders';
 import Input from '../../../components/UI/Input/Input';
 import * as orderActions from '../../../store/actions/index';
 import withErrorHandler from '../../withErrorHandler/withErrorHandler';
+import { updateObject } from '../../../shared/utility';
 
 class ContactData extends Component {
   state = {
@@ -149,15 +150,13 @@ class ContactData extends Component {
   }
 
   onChangeHandler = (e, id) => {
-    const updatedOrderForm = {...this.state.orderForm};
-    const updatedFormElement = {...updatedOrderForm[id]};
+    const updatedFormElement = updateObject(this.state.orderForm[id], {
+      value: e.target.value,
+      validity: this.checkValidity(e.target.value, this.state.orderForm[id].validation),
+      touched: true
+    });
 
-    updatedFormElement.value = e.target.value;
-    if (updatedFormElement.elementType !== 'select') {
-      updatedFormElement.validity = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
-      updatedFormElement.touched = true;
-    }
-    updatedOrderForm[id] = updatedFormElement;
+    const updatedOrderForm = updateObject(this.state.orderForm, {[id]: updatedFormElement});
 
     let validForm = true;
     for (let id in updatedOrderForm) {
