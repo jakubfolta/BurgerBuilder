@@ -7,7 +7,7 @@ import Button from '../../components/UI/Button/Button';
 import classes from './Auth.module.css';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import * as authActions from '../../store/actions/index';
-import { updateObject } from '../../shared/utility';
+import { updateObject, checkValidity } from '../../shared/utility';
 
 class Auth extends Component {
   state = {
@@ -49,43 +49,11 @@ class Auth extends Component {
     this.props.onSetAuthRedirectPath(url)
   }
 
-  checkValidity = (value, rules) => {
-    let isValid = false;
-
-    if (!rules) {
-      return true // for "deliveryMethod" state object
-    }
-
-    if (rules.required) {
-      isValid = value.trim() !== '';
-    }
-
-    if (rules.minLength) {
-      isValid = value.trim().length >= rules.minLength;
-    }
-
-    if (rules.minLength && rules.maxLength) {
-      isValid =  (value.trim().length >= rules.minLength) && (value.trim().length <= rules.maxLength);
-    }
-
-    if (rules.isEmail) {
-      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-      isValid = pattern.test(value) && isValid
-    }
-
-    if (rules.isNumeric) {
-      const pattern = /^\d+$/;
-      isValid = pattern.test(value) && isValid
-    }
-
-    return isValid;
-  }
-
   inputChangedHandler = (event, controlName) => {
     const updatedControls = updateObject(this.state.controls, {
       [controlName]: updateObject(this.state.controls[controlName], {
         value: event.target.value,
-        validity: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
+        validity: checkValidity(event.target.value, this.state.controls[controlName].validation),
         touched: true
       })
     });

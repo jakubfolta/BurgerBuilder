@@ -8,7 +8,7 @@ import axios from '../../../axios-orders';
 import Input from '../../../components/UI/Input/Input';
 import * as orderActions from '../../../store/actions/index';
 import withErrorHandler from '../../withErrorHandler/withErrorHandler';
-import { updateObject } from '../../../shared/utility';
+import { updateObject, checkValidity } from '../../../shared/utility';
 
 class ContactData extends Component {
   state = {
@@ -117,42 +117,10 @@ class ContactData extends Component {
     this.props.onOrderHandler(this.props.token, order);
   }
 
-  checkValidity = (value, rules) => {
-    let isValid = false;
-
-    if (!rules) {
-      return true // for "deliveryMethod" state object
-    }
-
-    if (rules.required) {
-      isValid = value.trim() !== '';
-    }
-
-    if (rules.minLength) {
-      isValid = value.trim().length >= rules.minLength;
-    }
-
-    if (rules.minLength && rules.maxLength) {
-      isValid =  (value.trim().length >= rules.minLength) && (value.trim().length <= rules.maxLength);
-    }
-
-    if (rules.isEmail) {
-      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-      isValid = pattern.test(value) && isValid
-    }
-
-    if (rules.isNumeric) {
-      const pattern = /^\d+$/;
-      isValid = pattern.test(value) && isValid
-    }
-
-    return isValid;
-  }
-
   onChangeHandler = (e, id) => {
     const updatedFormElement = updateObject(this.state.orderForm[id], {
       value: e.target.value,
-      validity: this.checkValidity(e.target.value, this.state.orderForm[id].validation),
+      validity: checkValidity(e.target.value, this.state.orderForm[id].validation),
       touched: true
     });
 
